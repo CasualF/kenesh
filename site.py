@@ -17,7 +17,10 @@ for i in range(20):
     for i in news:
         title = i.h3.text
         date = i.find('div','news__item__date').text
-        img = 'kenesh.kg'+i.find('img','news__item__image__img').get('src')
+        try:
+            img = 'kenesh.kg'+i.find('img','news__item__image__img').get('src')
+        except:
+            img = None
         link = 'http://kenesh.kg'+i.a.get('href')
         d_page = bs(get_html(link),'lxml')
         des = d_page.find('div','ck-editor').find_all('p')
